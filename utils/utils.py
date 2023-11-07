@@ -1,3 +1,4 @@
+from pydantic import EmailStr
 from core.config import settings
 from db.database import users_collection
 
@@ -10,7 +11,7 @@ def verify_password(password: str, hashed_pass: str) -> bool:
     return settings.PASSWORD_CONTEXT.verify(password, hashed_pass)
 
 
-async def get_user(username: str, email: str):
+async def get_user(username: str, email: EmailStr):
     user = await users_collection.find_one({"username": username})
     if user:
         return user, "username"
