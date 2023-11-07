@@ -4,7 +4,9 @@ from typing import ClassVar
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file="../.env")
+    PASSWORD_CONTEXT: ClassVar[CryptContext] = CryptContext(
+        schemes=["bcrypt"], deprecated="auto"
+    )
 
 
 settings = Settings()
