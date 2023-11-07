@@ -8,6 +8,10 @@ class Settings(BaseSettings):
         schemes=["bcrypt"], deprecated="auto"
     )
 
+    # MongoDB
+    MONGODB_HOST: str
+    MONGODB_PORT: int
+
     class Config:
         env_file = "/home/samane/Documents/MaktabSharif/FinalProject/Account-Microservice-FastAPI/.env"
 
