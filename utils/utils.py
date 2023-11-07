@@ -1,4 +1,7 @@
 from core.config import settings
+from db.database import users_collection
+
+
 def get_hashed_password(password: str) -> str:
     return settings.PASSWORD_CONTEXT.hash(password)
 
