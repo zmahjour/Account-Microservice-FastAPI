@@ -8,5 +8,8 @@ class Settings(BaseSettings):
         schemes=["bcrypt"], deprecated="auto"
     )
 
+    class Config:
+        env_file = "/home/samane/Documents/MaktabSharif/FinalProject/Account-Microservice-FastAPI/.env"
+
 
 settings = Settings()
