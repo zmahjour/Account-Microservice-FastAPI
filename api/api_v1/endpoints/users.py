@@ -33,3 +33,21 @@ async def account_register(new_user: UserRegister):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="There is a problem; try again.",
         )
+
+
+@router.post("/login", status_code=status.HTTP_200_OK)
+async def account_login(user_login: UserLogin):
+    user, detail = await get_user(username=user_login.username, email=user_login.email)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect username or email."
+        )
+
+    hashed_pass = user["password"]
+
+    if not verify_password(user_login.password, hashed_pass):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect password."
+        )
+
+    return {"detail": "You have logged in successfully."}
