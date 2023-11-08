@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     MONGODB_PORT: int
 
     class Config:
-        env_file = "/home/samane/Documents/MaktabSharif/FinalProject/Project/Account-Microservice-FastAPI/.env"
+        env_file = "/home/samane/Documents/MaktabSharif/FinalProject/Project/Account/.env"
 
 
 settings = Settings()
