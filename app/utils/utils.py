@@ -11,7 +11,7 @@ def verify_password(password: str, hashed_pass: str) -> bool:
     return settings.PASSWORD_CONTEXT.verify(password, hashed_pass)
 
 
-async def get_user(username: str, email: EmailStr):
+async def get_user(username: str = None, email: EmailStr = None):
     user = await users_collection.find_one({"username": username})
     if user:
         return user, "username"
