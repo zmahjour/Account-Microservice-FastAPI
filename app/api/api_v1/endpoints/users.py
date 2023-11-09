@@ -56,12 +56,13 @@ async def account_login(user_login: UserLogin):
 @router.post("/otp/login", status_code=status.HTTP_200_OK)
 async def otp_login(otp_login_data: OtpEmail):
     user, detail = await get_user(email=otp_login_data.email)
-    del user["_id"]
-    del user["password"]
 
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect email."
         )
+
+    del user["_id"]
+    del user["password"]
 
     return user
